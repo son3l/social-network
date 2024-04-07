@@ -3,6 +3,9 @@
     background-color: dimgray;
 }
 .item{
-    font-family: "Adelle Sans Devanagari";
+    font-family: "Adelle Sans Devanagari", sans-serif;
     color: beige;
+}
+.active{
+    color: cadetblue;
 }

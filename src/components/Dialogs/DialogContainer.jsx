@@ -2,38 +2,32 @@ import classes from "./Dialog.module.css";
 import {Messages} from "./messages/Messages";
 import {Names} from "./names/Names";
 import React from "react";
+import {Dialog} from "./Dialog";
+import {connect, Provider} from "react-redux";
 
-export const Dialog = (props) => {
-    let ref = React.createRef();
-    return (<div className={classes.dialog}>
-            <div>
-                {
-                    props.nameData.map((name) => {
-                        return <Names name={name.name} id={name.id}/>
-                    })
+export const DialogContainer = connect((state) => {
+        return ({
+            nameData: state.dialog.nameData,
+            messageData: state.dialog.messageData,
+            typingMessage: state.dialog.createMessage
+        })
+    }, (dispatch) => {
+        return (
+            {
+                typeMessage: (message) => {
+                    dispatch({type: 'typing-message', message: message.current.value})
+                },
+                addMessage: () => {
+                    dispatch({type: 'add-message'})
                 }
-            </div>
-            <div>
-                <div>
-                    {
-                        props.messageData.map((message) => {
-                            return <Messages message={message.message}/>
-                        })
-                    }
-                </div>
-                <div>
-                    <textarea ref={ref} onChange={() => {
-                        props.dispatch({type: 'typing-message', message: ref.current.value});
-                    }} value={props.typingMessage}></textarea>
-                    <div>
-                        <button onClick={() => {
-                            props.dispatch({type: 'add-message'})
-                        }}>send
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    )
-}
+            }
+        )
+    })(Dialog);
+        /* <Provider.Consumer>
+             <Dialog typeMessage={(message) => {
+                 store.dispatch({type: 'typing-message', message: message.current.value});
+             }} addMessage={() => {
+                 store.dispatch({type: 'add-message'})
+             }} nameData={store.getState().dialog.nameData} messageData={store.getState().dialog.messageData}
+                     typingMessage={store.getState().dialog.createMessage}/>
+         </Provider.Consumer>*/

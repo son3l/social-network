@@ -1,5 +1,12 @@
 
 .content{
-    grid-area: c;
     background-color: dimgray;
+}
+
+.load{
+    height: 150px;
+    width: 150px;
+    padding-right: 45%;
+    padding-left: 45%;
+    padding-top: 30%;
 }

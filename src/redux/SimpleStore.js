@@ -1,9 +1,8 @@
-import {ProfileReducer} from "./Reducers/ProfileReducer";
+import {ProfilePostReducer} from "./Reducers/ProfilePostReducer";
 import {DialogReducer} from "./Reducers/DialogReducer";
 
-export let store = {
-    renderTree: () => {
-    },
+export let simpleStore = {
+    renderTree: () => {},
     state: {
         dialog: {
             createMessage: '',
@@ -25,7 +24,6 @@ export let store = {
             ]
         }
     },
-
     changeValue() {
         this.state.profile.postData.push({
             id: this.state.profile.postData.length + 1,
@@ -53,12 +51,10 @@ export let store = {
         this.state.dialog.createMessage = '';
         this.renderTree();
     },
-
-   // dispatch(action) {
-
-   //   this.state.profile = ProfileReducer(action, this.state.profile);
-    //  this.state.dialog = DialogReducer(action, this.state.dialog);
-     // this.renderTree();
+    dispatch(action) {
+      this.state.profile = ProfilePostReducer(action, this.state.profile);
+      this.state.dialog = DialogReducer(action, this.state.dialog);
+      this.renderTree();
         // eslint-disable-next-line default-case
         /*switch (action.type) {
             case('typing-post'): {
@@ -78,5 +74,5 @@ export let store = {
                 break;
             }
         }*/
-   // }
+    }
 }
