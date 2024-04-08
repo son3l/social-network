@@ -4,13 +4,14 @@ import axios from "axios";
 import {UserBar} from "./UserBar";
 import {Pages} from "./Pages/Pages";
 import loading from './loading.svg';
+import {fetchUser} from "../../Api/api";
 
 export class UserBarClass extends React.Component {
     getData(page, count) {
         this.props.fetching();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${count}`,{withCredentials:true}).then((res) => {
+        fetchUser(page,count).then(res => {
             this.props.fetching();
-            this.props.setUsers(res.data.items, res.data.totalCount);
+            this.props.setUsers(res.items, res.totalCount);
         })
 
     }
