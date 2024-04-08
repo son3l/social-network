@@ -6,3 +6,23 @@
 .head img {
     width: 50px;
 }
+.login{
+    border: bisque solid 2px;
+    border-radius: 10px;
+    float: right;
+}
+.text{
+    padding: 5px;
+    color: beige;
+}
+.image{
+    width: 20px;
+    height: 30px;
+    border-radius: 10px;
+}
+.profile{
+    background-color: dimgray;
+    border-radius: 4px;
+    float: right;
+
+}

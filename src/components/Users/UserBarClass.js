@@ -1,7 +1,5 @@
 import React from "react";
 import classes from "./UserBar.module.css";
-import {User} from "./User/User";
-import logo from "./logo192.png";
 import axios from "axios";
 import {UserBar} from "./UserBar";
 import {Pages} from "./Pages/Pages";
@@ -10,13 +8,12 @@ import loading from './loading.svg';
 export class UserBarClass extends React.Component {
     getData(page, count) {
         this.props.fetching();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${count}`).then((res) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${count}`,{withCredentials:true}).then((res) => {
             this.props.fetching();
             this.props.setUsers(res.data.items, res.data.totalCount);
         })
 
     }
-
     componentDidMount() {
         this.getData(this.props.currentPage, this.props.pageSize);
     }
