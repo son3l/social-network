@@ -10,7 +10,8 @@ export const UserBarContainer = connect(
                 pageSize: state.users.pageSize,
                 totalCount: state.users.totalUsersCount,
                 currentPage: state.users.currentPage,
-                isFetching: state.users.isFetching
+                isFetching: state.users.isFetching,
+                followProgress: state.users.followProgress
             }
         )
     },
@@ -28,7 +29,11 @@ export const UserBarContainer = connect(
                 },
                 fetching: () => {
                     dispatch({type: 'fetch'})
+                },
+                followProgressF: ()=>{
+                    dispatch({type:'follow-progress'})
                 }
+
             }
         )
     }

@@ -6,7 +6,8 @@ let user = {
     pageSize:20,
     totalUsersCount:1,
     currentPage:1,
-    isFetching: false
+    isFetching: false,
+    followProgress: false
 }
 export const UsersReducer = (state = user, action) => {
     switch (action.type) {
@@ -24,6 +25,11 @@ export const UsersReducer = (state = user, action) => {
                     })
                 }
             )
+        }
+        case('follow-progress'):{
+            return {
+                ...state, followProgress: !state.followProgress
+            }
         }
         case('set-users'): {
             return {...state, users: [ ...action.users], totalUsersCount: action.count};

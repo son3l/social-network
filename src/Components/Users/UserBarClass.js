@@ -45,7 +45,7 @@ export class UserBarClass extends React.Component {
                                 <Pages pages={this.getPages()} updatePages={this.updatePages.bind(this)}
                                        currentPage={this.props.currentPage}/>
                             </div>
-                            <UserBar users={this.props.users} follow={this.props.follow}/>
+                            <UserBar followProgressF={this.props.followProgressF} followProgress={this.props.followProgress} users={this.props.users} follow={this.props.follow}/>
                         </div>
                 }
             </>

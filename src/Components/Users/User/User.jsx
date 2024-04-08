@@ -14,11 +14,13 @@ export const User = (props) => {
                 About: {props.about}
                 <div className={classes.location}>Location: {'props.location.country'}, {'props.location.city'}</div>
             </div>
-            <button onClick={() => {
+            <button disabled={props.followProgress} onClick={() => {
+                props.followProgressF();
                 fetchFollow(props.followed, props.id).then(res => {
                     if (res)
                         props.follow(props.id);
                 })
+                props.followProgressF();
             }
             }
             >{props.followed ? 'unfollow' : 'follow'}</button>
