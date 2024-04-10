@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 import {ProfileContent} from "./ProfileContent";
 import {fetchProfile} from "../../Api/api";
+import {getProfileThunkCreator} from "../../Redux/Reducers/ProfilePostReducer";
+import {Navigate} from "react-router-dom";
+import {AuthHOC} from "../../Redux/Reducers/AuthReducer";
 
 export class ProfileContentClass extends React.Component {
 
     getData() {
-        fetchProfile(this.props.router.params.profileId).then((res) => {
-            this.props.setProfile(res);
-        })
-
+        this.props.getProfileThunkCreator(this.props.router.params.profileId);
     }
 
     componentDidMount() {
@@ -17,9 +17,16 @@ export class ProfileContentClass extends React.Component {
     }
 
     render() {
-        return (
-            <ProfileContent {...this.props} profile={this.props.profile}/>
-        )
+       if(this.props.isAuth)
+        {
+            return(
+            <ProfileContent {...this.props} profile={this.props.profile}/>)
+
+        }else
+        {
+            return (<Navigate to={'/login'}/>)
+        }
+
     }
 
 

@@ -4,12 +4,14 @@ import {Names} from "./names/Names";
 import React from "react";
 import {Dialog} from "./Dialog";
 import {connect, Provider} from "react-redux";
+import {authHoc} from "../Hoc/AuthRedirect";
 
 export const DialogContainer = connect((state) => {
         return ({
             nameData: state.dialog.nameData,
             messageData: state.dialog.messageData,
-            typingMessage: state.dialog.createMessage
+            typingMessage: state.dialog.createMessage,
+            isAuth: state.auth.isAuth
         })
     }, (dispatch) => {
         return (
@@ -22,7 +24,7 @@ export const DialogContainer = connect((state) => {
                 }
             }
         )
-    })(Dialog);
+    })(authHoc(Dialog));
         /* <Provider.Consumer>
              <Dialog typeMessage={(message) => {
                  store.dispatch({type: 'typing-message', message: message.current.value});

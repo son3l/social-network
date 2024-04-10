@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import {UserBar} from "./UserBar";
 import {UserBarClass} from "./UserBarClass";
 import {followThunkCreator, getUsersThunkCreator} from "../../Redux/Reducers/UsersReducer";
+import {authHoc} from "../Hoc/AuthRedirect";
 
 export const UserBarContainer = connect(
     (state) => {
@@ -12,7 +13,8 @@ export const UserBarContainer = connect(
                 totalCount: state.users.totalUsersCount,
                 currentPage: state.users.currentPage,
                 isFetching: state.users.isFetching,
-                followProgress: state.users.followProgress
+                followProgress: state.users.followProgress,
+                isAuth: state.auth.isAuth
             }
         )
     },
@@ -44,4 +46,4 @@ export const UserBarContainer = connect(
             }
         )
     }
-)(UserBarClass)
+)(authHoc(UserBarClass));

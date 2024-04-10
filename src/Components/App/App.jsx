@@ -10,6 +10,7 @@ import {ProfileContentClass} from "../ProfileContent/ProfileContentClass";
 import {ProfileContentContainer} from "../ProfileContent/ProfileContentContainer";
 import {HeaderClass} from "../Header/HeaderClass";
 import {HeaderContainer} from "../Header/HeaderContainer";
+import {LoginPage} from "../LoginPage/LoginPage";
 
 
 function App(props) {
@@ -25,6 +26,7 @@ function App(props) {
                         <Route path='/profile/:profileId'
                                element={<ProfileContentContainer/>}/>
                         <Route path='/users' element={<UserBarContainer/>}/>
+                        <Route path={'/login'} element={<LoginPage/>}/>
                     </Routes>
                 </div>
             </div>

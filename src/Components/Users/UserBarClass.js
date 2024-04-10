@@ -5,6 +5,7 @@ import {UserBar} from "./UserBar";
 import {Pages} from "./Pages/Pages";
 import loading from './loading.svg';
 import {fetchUser} from "../../Api/api";
+import {Navigate} from "react-router-dom";
 
 export class UserBarClass extends React.Component {
     getData(page, count) {
@@ -36,6 +37,8 @@ export class UserBarClass extends React.Component {
     }
 
     render() {
+        if(this.props.isAuth)
+        {
         return (<>
                 {
                     this.props.isFetching
@@ -52,5 +55,9 @@ export class UserBarClass extends React.Component {
                 }
             </>
         );
+        }else
+        {
+            return (<Navigate to={'/login'}/>)
+        }
     }
 }

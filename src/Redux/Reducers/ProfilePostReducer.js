@@ -1,3 +1,5 @@
+import {fetchProfile} from "../../Api/api";
+
 let profile = {
     createPostValue: '',
     postData: [
@@ -5,7 +7,7 @@ let profile = {
         {id: 2, message: "bla bla"},
         {id: 3, message: "bla bla bla"},
     ],
-    profile:null,
+    profile: null,
 };
 export const ProfilePostReducer = (state = profile, action) => {
     switch (action.type) {
@@ -44,5 +46,14 @@ export const ProfilePostReducer = (state = profile, action) => {
         default: {
             return state;
         }
+    }
+}
+
+export const getProfileThunkCreator = (profileId) => {
+    return (dispatch) => {
+        fetchProfile(profileId).then((res) => {
+            dispatch({type: 'set-profile', profile: res})
+        })
+
     }
 }
