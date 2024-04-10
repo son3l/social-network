@@ -14,15 +14,7 @@ export const User = (props) => {
                 About: {props.about}
                 <div className={classes.location}>Location: {'props.location.country'}, {'props.location.city'}</div>
             </div>
-            <button disabled={props.followProgress} onClick={() => {
-                props.followProgressF();
-                fetchFollow(props.followed, props.id).then(res => {
-                    if (res)
-                        props.follow(props.id);
-                })
-                props.followProgressF();
-            }
-            }
+            <button disabled={props.followProgress} onClick={()=>{props.followThunkCreator(props.followed,props.id)}}
             >{props.followed ? 'unfollow' : 'follow'}</button>
 
         </div>

@@ -1,11 +1,13 @@
+import {fetchFollow, fetchUser} from "../../Api/api";
+
 let user = {
     users: [/*
         {id: 1, followed: true, name: 'Bla Bla', about: 'qwerty', location: {city: 'blablaland', country: 'ddd'}},
         {id: 2, followed: false, name: 'abooba', about: 'abooba', location: {city: 'blablaland2', country: 'ddd2'}}
    */],
-    pageSize:20,
-    totalUsersCount:1,
-    currentPage:1,
+    pageSize: 20,
+    totalUsersCount: 1,
+    currentPage: 1,
     isFetching: false,
     followProgress: false
 }
@@ -26,22 +28,43 @@ export const UsersReducer = (state = user, action) => {
                 }
             )
         }
-        case('follow-progress'):{
+        case('follow-progress'): {
             return {
                 ...state, followProgress: !state.followProgress
             }
         }
         case('set-users'): {
-            return {...state, users: [ ...action.users], totalUsersCount: action.count};
+            return {...state, users: [...action.users], totalUsersCount: action.count};
         }
-        case('set-page'):{
+        case('set-page'): {
             return {...state, currentPage: action.page}
         }
-        case('fetch'):{
-            return {...state, isFetching:!state.isFetching}
+        case('fetch'): {
+            return {...state, isFetching: !state.isFetching}
         }
         default: {
             return {...state};
         }
+    }
+}
+
+export const getUsersThunkCreator = (page, count) => {
+    return (dispatch) => {
+        dispatch({type: 'fetch'});
+        fetchUser(page, count).then(res => {
+            dispatch({type: 'fetch'});
+            dispatch({type: 'set-users', users: res.items, count: res.totalCount});
+        });
+    }
+}
+export const followThunkCreator = (followed,id)=>{
+    return (dispatch)=>{
+        dispatch({type: 'follow-progress'});
+
+        fetchFollow(followed, id).then(res => {
+            if (res)
+                dispatch({type: 'follow', id: id});
+        });
+        dispatch({type: 'follow-progress'})
     }
 }

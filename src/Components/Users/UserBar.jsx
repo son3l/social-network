@@ -13,7 +13,7 @@ export const UserBar = (props) => {
                             <User id={user.id} logo={user.photos.small ? user.photos.small : logo} name={user.name}
                                   about={user.about} location={user.location}
                                   followed={user.followed} followProgress={props.followProgress}
-                                  follow={props.follow} followProgressF={props.followProgressF}/>
+                                  follow={props.follow} followThunkCreator={props.followThunkCreator}/>
                             </div>
                     )
                 })

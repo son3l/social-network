@@ -8,12 +8,14 @@ import {fetchUser} from "../../Api/api";
 
 export class UserBarClass extends React.Component {
     getData(page, count) {
+        this.props.getUsersThunkCreator(page,count);
+        /*
         this.props.fetching();
         fetchUser(page,count).then(res => {
             this.props.fetching();
             this.props.setUsers(res.items, res.totalCount);
         })
-
+*/
     }
     componentDidMount() {
         this.getData(this.props.currentPage, this.props.pageSize);
@@ -45,7 +47,7 @@ export class UserBarClass extends React.Component {
                                 <Pages pages={this.getPages()} updatePages={this.updatePages.bind(this)}
                                        currentPage={this.props.currentPage}/>
                             </div>
-                            <UserBar followProgressF={this.props.followProgressF} followProgress={this.props.followProgress} users={this.props.users} follow={this.props.follow}/>
+                            <UserBar followThunkCreator={this.props.followThunkCreator} followProgress={this.props.followProgress} users={this.props.users} follow={this.props.follow}/>
                         </div>
                 }
             </>

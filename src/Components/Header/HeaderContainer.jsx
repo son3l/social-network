@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import {HeaderClass} from "./HeaderClass";
+import {AuthThunkCreator} from "../../Redux/Reducers/AuthReducer";
 
 export const HeaderContainer = connect(
     (state) => {
@@ -18,9 +19,12 @@ export const HeaderContainer = connect(
                 setAuth: (userId, email, login) => {
                     dispatch({type: 'set-user-data', data: {userId, email, login}})
                 },
-                setUser: (user)=>{
+                setUser: (user) => {
 
-                    dispatch({type:'set-user-profile', user:user})
+                    dispatch({type: 'set-user-profile', user: user})
+                },
+                AuthThunkCreator: () => {
+                    AuthThunkCreator()(dispatch)
                 }
             }
         )

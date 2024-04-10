@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import {UserBar} from "./UserBar";
 import {UserBarClass} from "./UserBarClass";
+import {followThunkCreator, getUsersThunkCreator} from "../../Redux/Reducers/UsersReducer";
 
 export const UserBarContainer = connect(
     (state) => {
@@ -30,8 +31,14 @@ export const UserBarContainer = connect(
                 fetching: () => {
                     dispatch({type: 'fetch'})
                 },
-                followProgressF: ()=>{
-                    dispatch({type:'follow-progress'})
+                followProgressF: () => {
+                    dispatch({type: 'follow-progress'})
+                },
+                getUsersThunkCreator: (page, count) => {
+                    getUsersThunkCreator(page, count)(dispatch)
+                },
+                followThunkCreator: (followed, id) => {
+                    followThunkCreator(followed, id)(dispatch)
                 }
 
             }
