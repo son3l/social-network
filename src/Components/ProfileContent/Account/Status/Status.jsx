@@ -2,21 +2,41 @@ import React from "react";
 
 export class Status extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
-    editState = (state)=>{
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.status!==this.props.status)
+            this.setState({...this.state, status: this.props.status})
+    }
+
+    editState = ()=>{
         this.setState({
-            ...state,
-            editMode: !state.editMode
+            ...this.state,
+            editMode: !this.state.editMode,
         })
+
+    }
+
+    saveState = ()=>{
+        this.setState({
+            ...this.state,
+            editMode: !this.state.editMode,
+        })
+        this.props.fetchStatusThunkCreator({action:'put',status:this.state.status})
+    }
+
+    inputStatus(event){
+        this.setState({...this.state, status : event.currentTarget.value});
     }
     render() {
         if (this.state.editMode)
             return (<div>
-                <input autoFocus={true} onBlur={()=>{this.editState(this.state)}} value={this.props.status}/>
+                <input onChange={this.inputStatus.bind(this)} autoFocus={true} onBlur={()=>{this.saveState()}} value={this.state.status}/>
             </div>)
         return (<div>
-            <span onClick={()=>{this.editState(this.state)}} >{this.props.status}</span>
+            <span onClick={()=>{this.editState()}} >{this.props.status||'----'}</span>
         </div>)
     }
 }

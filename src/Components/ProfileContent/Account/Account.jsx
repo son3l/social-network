@@ -8,7 +8,7 @@ export const Account = (props) => {
             <div>Name: {props.profile.fullName}</div>
             <div>Looking job: {props.profile.lookingForAJob ? props.profile.lookingForAJobDescription : 'no'}</div>
             <div>About:{props.profile.aboutMe}</div>
-            <Status status={'qwerty'}/>
+            <Status status={props.status} fetchStatusThunkCreator={props.fetchStatusThunkCreator}/>
         </div>
     )
 }

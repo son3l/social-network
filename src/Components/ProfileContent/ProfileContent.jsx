@@ -9,7 +9,7 @@ export const ProfileContent = (props) => {
         return (<img className={classes.load} src={loading}/>)
     return (
         <div className={classes.content}>
-            <Account profile={props.profile}/>
+            <Account profile={props.profile} status={props.status} fetchStatusThunkCreator={props.fetchStatusThunkCreator}/>
             <PostsContainer/>
         </div>
     )

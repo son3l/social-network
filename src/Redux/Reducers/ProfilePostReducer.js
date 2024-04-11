@@ -1,4 +1,4 @@
-import {fetchProfile} from "../../Api/api";
+import {fetchProfile, fetchStatus} from "../../Api/api";
 
 let profile = {
     createPostValue: '',
@@ -8,6 +8,7 @@ let profile = {
         {id: 3, message: "bla bla bla"},
     ],
     profile: null,
+    status: null
 };
 export const ProfilePostReducer = (state = profile, action) => {
     switch (action.type) {
@@ -43,6 +44,11 @@ export const ProfilePostReducer = (state = profile, action) => {
                 ...state, profile: {...action.profile}
             };
         }
+        case('set-status'):{
+            return {
+                ...state, status: action.status
+            }
+        }
         default: {
             return state;
         }
@@ -55,5 +61,12 @@ export const getProfileThunkCreator = (profileId) => {
             dispatch({type: 'set-profile', profile: res})
         })
 
+    }
+}
+export const fetchStatusThunkCreator = (data)=>{
+    return (dispatch)=>{
+        fetchStatus(data).then((res)=>{
+            dispatch({type:'set-status',status: res})
+        })
     }
 }
