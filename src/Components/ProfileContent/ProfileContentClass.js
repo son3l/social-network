@@ -17,16 +17,8 @@ export class ProfileContentClass extends React.Component {
     }
 
     render() {
-       if(this.props.isAuth)
-        {
             return(
             <ProfileContent {...this.props} profile={this.props.profile}/>)
-
-        }else
-        {
-            return (<Navigate to={'/login'}/>)
-        }
-
     }
 
 

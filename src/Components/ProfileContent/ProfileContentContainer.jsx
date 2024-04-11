@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import {ProfileContentClass} from "./ProfileContentClass";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {getProfileThunkCreator} from "../../Redux/Reducers/ProfilePostReducer";
-import {AuthHOC} from "../../Redux/Reducers/AuthReducer";
 import {authHoc} from "../Hoc/AuthRedirect";
  export const withRouter = (Component)=> {
     function ComponentWithRouterProp(props) {

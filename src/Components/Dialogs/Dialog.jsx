@@ -6,7 +6,6 @@ import {Navigate} from "react-router-dom";
 
 export const Dialog = (props) => {
     let ref = React.createRef();
-    if(props.isAuth){
     return (<div className={classes.dialog}>
             <div>
                 {
@@ -34,8 +33,4 @@ export const Dialog = (props) => {
 
         </div>
     )
-    }else
-    {
-        return (<Navigate to={'/login'}/>)
-    }
 }

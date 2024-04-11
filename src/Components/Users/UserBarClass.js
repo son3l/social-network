@@ -37,8 +37,6 @@ export class UserBarClass extends React.Component {
     }
 
     render() {
-        if(this.props.isAuth)
-        {
         return (<>
                 {
                     this.props.isFetching
@@ -55,9 +53,6 @@ export class UserBarClass extends React.Component {
                 }
             </>
         );
-        }else
-        {
-            return (<Navigate to={'/login'}/>)
-        }
+
     }
 }
