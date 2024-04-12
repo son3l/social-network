@@ -15,6 +15,9 @@ export const Header = (props) => {
                          src={props.profile.photos.small ? props.profile.photos.small : logo}/>
                     </NavLink>
                     <div>{props.profile.fullName}</div>
+                    <div onClick={()=>{
+                        props.LoginThunkCreator({type:false});
+                    }}>logout</div>
                 </div>
             </div>
         );

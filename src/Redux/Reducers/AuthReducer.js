@@ -1,6 +1,5 @@
 import axios from "axios";
-import {Navigate} from "react-router-dom";
-import React from "react";
+import {fetchLogin} from "../../Api/api";
 
 let initState = {
     userId: null,
@@ -14,13 +13,13 @@ export const authReducer = (state = initState, action) => {
         case('set-user-data'): {
 
             return {
-                ...state, ...action.data, isAuth: true
+                ...state, ...action.data
             }
         }
         case('set-user-profile'): {
 
             return {
-                ...state, profile: {...action.user}
+                ...state, profile: {...action.user}, isAuth: action.isAuth
             }
         }
         default:
@@ -35,13 +34,28 @@ export const AuthThunkCreator = () => {
                 if (res.data.resultCode === 0) {
                     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${res.data.data.id}`)
                         .then((res) => {
-                            dispatch({type: 'set-user-profile', user: res.data})
+                            debugger
+                            dispatch({type: 'set-user-profile', user: res.data, isAuth: true})
                         });
                     dispatch({
                         type: 'set-user-data',
-                        data: {userId: res.data.data.id, email: res.data.data.email, login: res.data.data.login}
+                        data: {userId: res.data.data.id, email: res.data.data.email, login: res.data.data.login},
                     })
                 }
             })
+    }
+}
+
+export const LoginThunkCreator = (data) => {
+    return (dispatch) => {
+        fetchLogin(data).then((res) => {
+            if (data.type) {
+                dispatch(AuthThunkCreator());
+            }
+            else {
+                dispatch({type: 'set-user-profile', user: null});
+                dispatch({type: 'set-user-data', data: null, isAuth: false});
+            }
+        })
     }
 }

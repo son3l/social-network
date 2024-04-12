@@ -52,3 +52,10 @@ export const fetchStatus = (data) => {
         }
     }
 }
+
+export const fetchLogin = (data) =>{
+    if(data.type)
+   return axios.post('https://social-network.samuraijs.com/api/1.0/auth/login',
+       {email:data.email, password:data.password, rememberMe:data.rememberMe});
+    return axios.delete('https://social-network.samuraijs.com/api/1.0/auth/login');
+}
