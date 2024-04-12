@@ -1,21 +1,16 @@
 import {Post} from "./Post";
 import logo from '../logo192.png';
 import React from "react";
+import {ReduxFormPostArea} from "./PostArea";
 
 export const Posts = (props) => {
-    let ref = React.createRef();
+    const submitPost = (data)=>{
+        props.addPost(data.newPost);
+    }
     return (
         <div>
             <div> Create Posts</div>
-            <div>
-                <textarea ref={ref} onChange={() => {
-                    props.typingPost(ref)
-                }} value={props.createPostValue}></textarea>
-            </div>
-            <button onClick={() => {
-                props.addPost()
-            }}>Create
-            </button>
+            <ReduxFormPostArea onSubmit={submitPost}/>
             <div>My Posts</div>
             {
                 props.postData.map((post) => {

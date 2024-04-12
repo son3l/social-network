@@ -13,30 +13,16 @@ let profile = {
 export const ProfilePostReducer = (state = profile, action) => {
     switch (action.type) {
         case('typing-post'): {
-            /*
-            let copyState = {...state};
-            copyState.createPostValue = action.message;*/
             return {
                 ...state,
                 createPostValue: action.message
             };
         }
         case('add-post'): {
-            /*  let copyState = {...state};
-              copyState.postData = [...state.postData];
-              copyState.postData.push({
-                  id: copyState.postData.length + 1,
-                  message: copyState.createPostValue
-              });
-              /!*state.postData.push({
-                  id: state.postData.length + 1,
-                  message: state.createPostValue
-              });*!/
-              copyState.createPostValue = '';*/
             return {
                 ...state,
                 createPostValue: '',
-                postData: [...state.postData, {id: state.postData.length + 1, message: state.createPostValue}]
+                postData: [...state.postData, {id: state.postData.length + 1, message: action.post}]
             };
         }
         case('set-profile'): {

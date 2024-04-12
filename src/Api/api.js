@@ -36,12 +36,12 @@ export const fetchStatus = (data) => {
         case('get'): {
             return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${data.id}`)
                 .then((res) => {
-                    debugger
+
                     return res.data
                 })
         }
         case('put'): {
-            debugger
+
             return axios.put(`https://social-network.samuraijs.com/api/1.0/profile/status`, {status: data.status}, {
                 withCredentials: true,
                 headers: {'API-KEY': '43727460-6c20-4e37-879b-0c62e4861fde'}

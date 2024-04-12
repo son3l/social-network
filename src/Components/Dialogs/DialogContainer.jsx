@@ -1,9 +1,6 @@
-import classes from "./Dialog.module.css";
-import {Messages} from "./messages/Messages";
-import {Names} from "./names/Names";
-import React from "react";
+
 import {Dialog} from "./Dialog";
-import {connect, Provider} from "react-redux";
+import {connect} from "react-redux";
 import {authHoc} from "../Hoc/AuthRedirect";
 
 export const DialogContainer = connect((state) => {
@@ -16,20 +13,9 @@ export const DialogContainer = connect((state) => {
     }, (dispatch) => {
         return (
             {
-                typeMessage: (message) => {
-                    dispatch({type: 'typing-message', message: message.current.value})
-                },
-                addMessage: () => {
-                    dispatch({type: 'add-message'})
+                addMessage: (message) => {
+                    dispatch({type: 'add-message', message: message})
                 }
             }
         )
     })(authHoc(Dialog));
-        /* <Provider.Consumer>
-             <Dialog typeMessage={(message) => {
-                 store.dispatch({type: 'typing-message', message: message.current.value});
-             }} addMessage={() => {
-                 store.dispatch({type: 'add-message'})
-             }} nameData={store.getState().dialog.nameData} messageData={store.getState().dialog.messageData}
-                     typingMessage={store.getState().dialog.createMessage}/>
-         </Provider.Consumer>*/

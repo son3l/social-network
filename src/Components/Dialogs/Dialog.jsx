@@ -3,9 +3,14 @@ import {Messages} from "./messages/Messages";
 import {Names} from "./names/Names";
 import React from "react";
 import {Navigate} from "react-router-dom";
+import {AddMessageFrom, ReduxFormMessageForm} from "./AddMessageFrom";
+
+
 
 export const Dialog = (props) => {
-    let ref = React.createRef();
+    const addNewMessage = (data)=>{
+        props.addMessage(data.message);
+    }
     return (<div className={classes.dialog}>
             <div>
                 {
@@ -22,13 +27,7 @@ export const Dialog = (props) => {
                         })
                     }
                 </div>
-                <div>
-                    <textarea ref={ref} onChange={()=>{props.typeMessage(ref)}} value={props.typingMessage}></textarea>
-                    <div>
-                        <button onClick={()=>{props.addMessage()}}>send
-                        </button>
-                    </div>
-                </div>
+                <ReduxFormMessageForm onSubmit={addNewMessage}/>
             </div>
 
         </div>

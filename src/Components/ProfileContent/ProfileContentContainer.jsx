@@ -27,10 +27,6 @@ export const ProfileContentContainer = connect(
     },
     (dispatch) => {
         return {
-// eslint-disable-next-line no-unused-expressions
-            setProfile: (profile) => {
-                dispatch({type: 'set-profile', profile: profile})
-            },
             getProfileThunkCreator: (profileId)=>{
                 getProfileThunkCreator(profileId)(dispatch);
             },
