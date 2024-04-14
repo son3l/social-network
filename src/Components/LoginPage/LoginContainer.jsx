@@ -5,7 +5,8 @@ import {LoginThunkCreator} from "../../Redux/Reducers/AuthReducer";
 export const LoginContainer = connect(
     (state) => {
 return{
-isAuth: state.auth.isAuth
+isAuth: state.auth.isAuth,
+    id: state.auth.userId
 }
     },
     (dispatch) => {

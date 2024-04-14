@@ -58,7 +58,7 @@ export const LoginThunkCreator = (data) => {
                     dispatch({type: 'set-user-data', data: null, isAuth: false});
                 }
             } else {
-                dispatch(stopSubmit('login',{_error: 'email or password is wrong'}));
+                dispatch(stopSubmit('login',{_error: res.data.messages[0]}));
             }
         })
     }

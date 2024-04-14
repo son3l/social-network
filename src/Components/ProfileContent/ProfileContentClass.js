@@ -1,10 +1,5 @@
 import React from "react";
-import axios from "axios";
 import {ProfileContent} from "./ProfileContent";
-import {fetchProfile, fetchStatus} from "../../Api/api";
-import {getProfileThunkCreator} from "../../Redux/Reducers/ProfilePostReducer";
-import {Navigate} from "react-router-dom";
-import {AuthHOC} from "../../Redux/Reducers/AuthReducer";
 
 export class ProfileContentClass extends React.Component {
 
