@@ -2,6 +2,8 @@
 .head{
     grid-area: h;
     background-color: darkgrey;
+    border: dimgray 2px solid;
+    border-radius: 10px;
 }
 .head img {
     width: 50px;
@@ -25,4 +27,29 @@
     border-radius: 4px;
     float: right;
 
+}
+.dropdownDisable{
+    display: none;
+}
+
+.dropdownActive{
+    display: block;
+    position: absolute;
+    background-color: dimgray;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.items{
+    color: darkgrey;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.items:hover{
+    background-color: lightgray;
+}
+.profileBox{
+    padding-right: 20px;
+    float: right;
 }

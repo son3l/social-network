@@ -1,5 +1,6 @@
 import axios from "axios";
 import {fetchLogin} from "../../Api/api";
+import {stopSubmit} from "redux-form";
 
 let initState = {
     userId: null,
@@ -23,7 +24,7 @@ export const authReducer = (state = initState, action) => {
             }
         }
         default:
-            return {...state}
+            return {...state}   
     }
 }
 
@@ -49,12 +50,15 @@ export const AuthThunkCreator = () => {
 export const LoginThunkCreator = (data) => {
     return (dispatch) => {
         fetchLogin(data).then((res) => {
-            if (data.type) {
-                dispatch(AuthThunkCreator());
-            }
-            else {
-                dispatch({type: 'set-user-profile', user: null});
-                dispatch({type: 'set-user-data', data: null, isAuth: false});
+            if(res.data.resultCode===0) {
+                if (data.type) {
+                    dispatch(AuthThunkCreator());
+                } else {
+                    dispatch({type: 'set-user-profile', user: null});
+                    dispatch({type: 'set-user-data', data: null, isAuth: false});
+                }
+            } else {
+                dispatch(stopSubmit('login',{_error: 'email or password is wrong'}));
             }
         })
     }

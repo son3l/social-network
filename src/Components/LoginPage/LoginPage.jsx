@@ -14,7 +14,6 @@ export const LoginPage = (props) => {
     return (<>
         {
             props.isAuth ? <Navigate to={'/profile'}/> : <>
-                <h1>LOGIN</h1>
                 <ReduxLoginForm onSubmit={onSubmit}/>
             </>
         }

@@ -1,11 +1,15 @@
 .nav{
     grid-area: n;
     background-color: dimgray;
+    border: darkgrey 2px solid;
+    border-radius: 10px;
 }
 .item{
     font-family: "Adelle Sans Devanagari", sans-serif;
     color: beige;
+    padding-left: 5px;
 }
 .active{
     color: cadetblue;
+    padding-left: 10px;
 }
