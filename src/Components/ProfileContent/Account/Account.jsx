@@ -1,6 +1,5 @@
 import classes from "./Account.module.css";
 import logo from './logo192.png'
-import {Status} from "./Status/Status";
 import {StatusWithHook} from "./Status/StatusWithHook";
 
 export const Account = (props) => {

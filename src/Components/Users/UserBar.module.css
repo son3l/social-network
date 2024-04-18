@@ -1,13 +1,15 @@
-.user-bar{
+.user-bar {
     background-color: darkgrey;
 }
-.user{
+
+.user {
     background-color: dimgray;
     font-family: "Adelle Sans Devanagari", sans-serif;
     padding: 15px;
     margin-top: 10px;
 }
-.active{
+
+.active {
     color: bisque;
     padding-left: 5px;
     padding-right: 5px;
@@ -15,7 +17,8 @@
     border-radius: 10px;
     background-color: dimgray;
 }
-.page{
+
+.page {
 
     border: bisque solid 2px;
     border-radius: 10px;
@@ -23,11 +26,13 @@
     padding-left: 5px;
     padding-right: 5px;
 }
-.count{
+
+.count {
     padding: 5px;
     background-color: darkgrey;
 }
-.load{
+
+.load {
     height: 150px;
     width: 150px;
     padding-right: 45%;

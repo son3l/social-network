@@ -1,11 +1,8 @@
 import React from "react";
 import classes from "./UserBar.module.css";
-import axios from "axios";
 import {UserBar} from "./UserBar";
 import {Pages} from "./Pages/Pages";
 import loading from './loading.svg';
-import {fetchUser} from "../../Api/api";
-import {Navigate} from "react-router-dom";
 
 export class UserBarClass extends React.Component {
     getData(page, count) {

@@ -1,5 +1,4 @@
 import {ReduxLoginForm} from "./LoginForm";
-import {reqField} from "../../Utils/Validate/Validator";
 import {Navigate} from "react-router-dom";
 
 export const LoginPage = (props) => {

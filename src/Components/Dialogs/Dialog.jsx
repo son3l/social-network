@@ -2,9 +2,7 @@ import classes from "./Dialog.module.css";
 import {Messages} from "./messages/Messages";
 import {Names} from "./names/Names";
 import React from "react";
-import {Navigate} from "react-router-dom";
-import {AddMessageFrom, ReduxFormMessageForm} from "./AddMessageFrom";
-
+import {ReduxFormMessageForm} from "./AddMessageFrom";
 
 
 export const Dialog = (props) => {

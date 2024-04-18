@@ -1,14 +1,17 @@
-.dialog{
+.dialog {
     background-color: darkgrey;
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
-.messages{
+
+.messages {
     padding: 10px;
 }
-.names{
- padding: 10px;
+
+.names {
+    padding: 10px;
 }
-.active{
+
+.active {
     color: cadetblue;
 }

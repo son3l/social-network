@@ -1,6 +1,5 @@
 import classes from "./User.module.css";
 import {NavLink} from "react-router-dom";
-import {fetchFollow} from "../../../Api/api";
 
 export const User = (props) => {
     return (

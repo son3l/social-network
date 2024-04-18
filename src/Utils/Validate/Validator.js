@@ -5,6 +5,6 @@ export const reqField = (value) => {
 export const maxLengthUser = (maxLength) => {
     return (value) => {
         if (value && value.length < maxLength) return undefined;
-        return 'max length 30 symbols';
+        return `max length ${maxLength} symbols`;
     }
 }

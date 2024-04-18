@@ -16,13 +16,6 @@ export const HeaderContainer = connect(
     (dispatch) => {
         return (
             {
-                setAuth: (userId, email, login) => {
-                    dispatch({type: 'set-user-data', data: {userId, email, login}})
-                },
-                setUser: (user) => {
-
-                    dispatch({type: 'set-user-profile', user: user})
-                },
                 AuthThunkCreator: () => {
                     AuthThunkCreator()(dispatch)
                 },

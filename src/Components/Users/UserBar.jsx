@@ -1,8 +1,6 @@
 import {User} from "./User/User";
 import logo from './logo192.png'
 import classes from "./UserBar.module.css";
-import axios from "axios";
-import {NavLink} from "react-router-dom";
 
 export const UserBar = (props) => {
     return (

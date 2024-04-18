@@ -1,19 +1,22 @@
-.error{
+.error {
     border: red 1px solid;
     color: red;
     float: left;
     border-radius: 3px;
 }
-.fields{
+
+.fields {
     padding: 5px;
 }
-.form{
+
+.form {
     padding-left: 40%;
     border: dimgray 2px solid;
     background-color: darkgrey;
     border-radius: 25px;
 }
-.button{
+
+.button {
     background-color: dimgray;
     color: black;
     border-radius: 5px;

@@ -21,5 +21,22 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "thumbnail": "",
+  "lib": ".",
+  "keywords": [],
+  "configuration": {},
+  "author": "Vlad Bulavko",
+  "defaultDocument": "",
+  "description": "",
+  "main": "index.js",
+  "version": "",
+  "dependencies": {},
+  "license": "",
+  "tests": "test/**/*.js",
+  "provides": {},
+  "engines": {},
+  "files": {},
+  "contributors": [],
+  "scripts": {}
 }

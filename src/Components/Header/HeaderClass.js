@@ -1,7 +1,5 @@
 import React from "react";
 import {Header} from "./Header";
-import axios from "axios";
-import {AuthThunkCreator} from "../../Redux/Reducers/AuthReducer";
 
 
 export class HeaderClass extends React.Component {
