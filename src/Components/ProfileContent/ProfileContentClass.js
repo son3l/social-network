@@ -4,8 +4,18 @@ import {ProfileContent} from "./ProfileContent";
 export class ProfileContentClass extends React.Component {
 
     getData() {
-        this.props.getProfileThunkCreator(this.props.router.params.profileId);
-        this.props.fetchStatusThunkCreator({id:this.props.router.params.profileId, action:'get'});
+        this.props.getProfileThunkCreator(this.props.router.params.profileId ? this.props.router.params.profileId : this.props.id);
+        this.props.fetchStatusThunkCreator({
+            id: this.props.router.params.profileId ? this.props.router.params.profileId : this.props.id,
+            action: 'get'
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.router.params.profileId !== this.props.router.params.profileId) {
+            this.props.getProfileThunkCreator(this.props.id);
+            this.props.fetchStatusThunkCreator({id: this.props.id, action: 'get'});
+        }
     }
 
     componentDidMount() {
@@ -13,8 +23,9 @@ export class ProfileContentClass extends React.Component {
     }
 
     render() {
-            return(
-            <ProfileContent {...this.props} status={this.props.status} profile={this.props.profile} fetchStatusThunkCreator={this.props.fetchStatusThunkCreator}/>)
+        return (
+            <ProfileContent {...this.props} saveFileThunkCreator={this.props.saveFileThunkCreator} owner={!this.props.router.params.profileId} status={this.props.status} profile={this.props.profile}
+                            fetchStatusThunkCreator={this.props.fetchStatusThunkCreator}/>)
     }
 
 

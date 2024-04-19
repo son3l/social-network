@@ -7,7 +7,8 @@ let initState = {
     email: null,
     login: null,
     isAuth: false,
-    profile: null
+    profile: null,
+    photo: null
 }
 export const authReducer = (state = initState, action) => {
     switch (action.type) {
@@ -23,6 +24,11 @@ export const authReducer = (state = initState, action) => {
                 ...state, profile: {...action.user}, isAuth: action.isAuth
             }
         }
+        case('auth/save-photo'):{
+            return {
+                ...state, photo: {...action.photo}
+            }
+        }
         default:
             return {...state}   
     }
@@ -35,7 +41,6 @@ export const AuthThunkCreator = () => {
                 if (res.data.resultCode === 0) {
                     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${res.data.data.id}`)
                         .then((res) => {
-                            debugger
                             dispatch({type: 'set-user-profile', user: res.data, isAuth: true})
                         });
                     dispatch({

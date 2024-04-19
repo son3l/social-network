@@ -52,10 +52,23 @@ export const fetchStatus = (data) => {
         }
     }
 }
+export const fetchPhoto = (file) => {
+    let data = new FormData();
+    data.append('image', file)
+    return axios.put('https://social-network.samuraijs.com/api/1.0/profile/photo',
+        data,
+        {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
 
-export const fetchLogin = (data) =>{
-    if(data.type)
-   return axios.post('https://social-network.samuraijs.com/api/1.0/auth/login',
-       {email:data.email, password:data.password, rememberMe:data.rememberMe});
+}
+
+export const fetchLogin = (data) => {
+    if (data.type)
+        return axios.post('https://social-network.samuraijs.com/api/1.0/auth/login',
+            {email: data.email, password: data.password, rememberMe: data.rememberMe});
     return axios.delete('https://social-network.samuraijs.com/api/1.0/auth/login');
 }

@@ -5,6 +5,15 @@ import {StatusWithHook} from "./Status/StatusWithHook";
 export const Account = (props) => {
     return (<div className={classes.acc}>
             <img className={classes.image} src={props.profile.photos.small ? props.profile.photos.small : logo}/>
+            <br/>
+            {
+                props.owner&&<input className={classes.file} type={'file'} onChange={(event)=>{
+                    if(event.target.files.length)
+                    {
+                        props.saveFileThunkCreator(event.target.files[0]);
+                    }
+                }}/>
+            }
             <div>Name: {props.profile.fullName}</div>
             <div>Looking job: {props.profile.lookingForAJob ? props.profile.lookingForAJobDescription : 'no'}</div>
             <div>About:{props.profile.aboutMe}</div>

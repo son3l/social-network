@@ -1,7 +1,11 @@
 import {connect} from "react-redux";
 import {ProfileContentClass} from "./ProfileContentClass";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {fetchStatusThunkCreator, getProfileThunkCreator} from "../../Redux/Reducers/ProfilePostReducer";
+import {
+    fetchStatusThunkCreator,
+    getProfileThunkCreator,
+    saveFileThunkCreator
+} from "../../Redux/Reducers/ProfilePostReducer";
 import {authHoc} from "../Hoc/AuthRedirect";
  export const withRouter = (Component)=> {
     function ComponentWithRouterProp(props) {
@@ -22,7 +26,8 @@ export const ProfileContentContainer = connect(
         return {
             profile: state.profile.profile,
             isAuth: state.auth.isAuth,
-            status: state.profile.status
+            status: state.profile.status,
+            id: state.auth.userId
         }
     },
     (dispatch) => {
@@ -32,6 +37,9 @@ export const ProfileContentContainer = connect(
             },
             fetchStatusThunkCreator: (data)=>{
                 fetchStatusThunkCreator(data)(dispatch);
+            },
+            saveFileThunkCreator: (file)=>{
+                saveFileThunkCreator(file)(dispatch);
             }
         }
     }

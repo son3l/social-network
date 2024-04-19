@@ -1,4 +1,4 @@
-import {fetchProfile, fetchStatus} from "../../Api/api";
+import {fetchPhoto, fetchProfile, fetchStatus} from "../../Api/api";
 
 let profile = {
     createPostValue: '',
@@ -35,6 +35,11 @@ export const ProfilePostReducer = (state = profile, action) => {
                 ...state, status: action.status
             }
         }
+        case('save-photo'):{
+            return {
+                ...state, profile: {...state.profile, photos:{...action.photo}}
+            }
+        }
         default: {
             return state;
         }
@@ -53,6 +58,14 @@ export const fetchStatusThunkCreator = (data)=>{
     return (dispatch)=>{
         fetchStatus(data).then((res)=>{
             dispatch({type:'set-status',status: res})
+        })
+    }
+}
+export const saveFileThunkCreator =(file)=>{
+    return (dispatch)=>{
+        fetchPhoto(file).then((res)=>{
+            dispatch({type:'save-photo', photo:res.data.data.photos})
+            dispatch({type:'auth/save-photo', photo:res.data.data.photos})
         })
     }
 }
