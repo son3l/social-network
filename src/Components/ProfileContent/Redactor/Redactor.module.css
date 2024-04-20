@@ -18,3 +18,9 @@
 .modules{
     font-size: large;
 }
+.error {
+    border: red 1px solid;
+    color: red;
+    float: left;
+    border-radius: 3px;
+}

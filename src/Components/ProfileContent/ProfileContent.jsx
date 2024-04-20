@@ -6,8 +6,7 @@ import React, {useState} from "react";
 import {RedactorForm} from "./Redactor/Redactor";
 
 export const ProfileContent = (props) => {
-    let [mode, setMode] = useState(false);
-    const onSubmit = (formData)=>{
+    const onSubmit = (formData) => {
         props.saveProfileThunkCreator({...formData, userId: props.id});
     };
     if (!props.profile)
@@ -15,10 +14,12 @@ export const ProfileContent = (props) => {
     return (
         <div className={classes.content}>
             {
-                mode?<RedactorForm onSubmit={onSubmit} setMode={setMode} profile={props.profile}/>:
+                props.saveProfile ?
+                    <RedactorForm initialValues={props.profile} onSubmit={onSubmit} editProfile={props.editProfile}
+                                  profile={props.profile}/> :
                     <>
                         <button className={classes.change} onClick={() => {
-                            setMode(true)
+                            props.editProfile();
                         }}>change profile
                         </button>
                         <Account saveFileThunkCreator={props.saveFileThunkCreator} owner={props.owner}

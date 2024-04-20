@@ -25,7 +25,7 @@ export class ProfileContentClass extends React.Component {
 
     render() {
         return (
-            <ProfileContent {...this.props} saveProfileThunkCreator={this.props.saveProfileThunkCreator} saveFileThunkCreator={this.props.saveFileThunkCreator} owner={!this.props.router.params.profileId} status={this.props.status} profile={this.props.profile}
+            <ProfileContent {...this.props} saveProfile={this.props.saveProfile} editProfile={this.props.editProfile} saveProfileThunkCreator={this.props.saveProfileThunkCreator} saveFileThunkCreator={this.props.saveFileThunkCreator} owner={!this.props.router.params.profileId} status={this.props.status} profile={this.props.profile}
                             fetchStatusThunkCreator={this.props.fetchStatusThunkCreator}/>)
     }
 

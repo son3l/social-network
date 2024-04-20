@@ -4,9 +4,9 @@ import {Field, reduxForm} from "redux-form";
 import classes from "./Redactor.module.css";
 
 const Redactor = (props) => {
+    debugger
     return (<>
         <form onSubmit={props.handleSubmit}>
-            <div>FORM</div>
             <div className={classes.form}>
                 <div className={classes.modules}>Profile info</div>
                 <span>Name</span> <Field className={classes.fields} validate={[reqField]}
@@ -53,10 +53,13 @@ const Redactor = (props) => {
             </div>
             <button className={classes.button}>save</button>
         </form>
-        <div className={props.error ? classes.error : ''}>{props.error?
-            props.error.map((element)=>{return <div>{element}</div>}):<></>}</div>
+        <div className={props.error ? classes.error : ''}>
+            {props.error ?
+                props.error.map((element) => {
+                    return <div>{element}</div>
+                }) : <></>}</div>
         <button className={classes.button} onClick={() => {
-            props.setMode(false);
+            props.editProfile();
         }}>cancel
         </button>
     </>)

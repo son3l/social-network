@@ -9,7 +9,8 @@ let profile = {
         {id: 3, message: "bla bla bla"},
     ],
     profile: null,
-    status: null
+    status: null,
+    saveProfile: false
 };
 export const ProfilePostReducer = (state = profile, action) => {
     switch (action.type) {
@@ -43,7 +44,12 @@ export const ProfilePostReducer = (state = profile, action) => {
         }
         case('save-info'): {
             return {
-                ...state, profile: {...action.profile}
+                ...state, profile: {...action.profile, photos: state.profile.photos}, saveProfile: !state.saveProfile,
+            }
+        }
+        case('set-save-profile'): {
+            return {
+                ...state, saveProfile: !state.saveProfile
             }
         }
         default: {

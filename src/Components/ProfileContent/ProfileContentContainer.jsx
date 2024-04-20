@@ -27,7 +27,8 @@ export const ProfileContentContainer = connect(
             profile: state.profile.profile,
             isAuth: state.auth.isAuth,
             status: state.profile.status,
-            id: state.auth.userId
+            id: state.auth.userId,
+            saveProfile: state.profile.saveProfile
         }
     },
     (dispatch) => {
@@ -43,6 +44,9 @@ export const ProfileContentContainer = connect(
             },
             saveProfileThunkCreator: (formData)=>{
                 saveProfileThunkCreator(formData)(dispatch);
+            },
+            editProfile: ()=>{
+                dispatch({type:'set-save-profile'});
             }
         }
     }
