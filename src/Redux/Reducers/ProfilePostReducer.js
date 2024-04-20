@@ -1,4 +1,5 @@
-import {fetchPhoto, fetchProfile, fetchStatus} from "../../Api/api";
+import {fetchInfoProfile, fetchPhoto, fetchProfile, fetchStatus} from "../../Api/api";
+import {stopSubmit} from "redux-form";
 
 let profile = {
     createPostValue: '',
@@ -30,14 +31,19 @@ export const ProfilePostReducer = (state = profile, action) => {
                 ...state, profile: {...action.profile}
             };
         }
-        case('set-status'):{
+        case('set-status'): {
             return {
                 ...state, status: action.status
             }
         }
-        case('save-photo'):{
+        case('save-photo'): {
             return {
-                ...state, profile: {...state.profile, photos:{...action.photo}}
+                ...state, profile: {...state.profile, photos: {...action.photo}}
+            }
+        }
+        case('save-info'): {
+            return {
+                ...state, profile: {...action.profile}
             }
         }
         default: {
@@ -54,18 +60,47 @@ export const getProfileThunkCreator = (profileId) => {
 
     }
 }
-export const fetchStatusThunkCreator = (data)=>{
-    return (dispatch)=>{
-        fetchStatus(data).then((res)=>{
-            dispatch({type:'set-status',status: res})
+export const fetchStatusThunkCreator = (data) => {
+    return (dispatch) => {
+        fetchStatus(data).then((res) => {
+            dispatch({type: 'set-status', status: res})
         })
     }
 }
-export const saveFileThunkCreator =(file)=>{
-    return (dispatch)=>{
-        fetchPhoto(file).then((res)=>{
-            dispatch({type:'save-photo', photo:res.data.data.photos})
-            dispatch({type:'auth/save-photo', photo:res.data.data.photos})
+export const saveFileThunkCreator = (file) => {
+    return (dispatch) => {
+        fetchPhoto(file).then((res) => {
+            dispatch({type: 'save-photo', photo: res.data.data.photos})
+            dispatch({type: 'auth/save-photo', photo: res.data.data.photos})
+        })
+    }
+}
+export const saveProfileThunkCreator = (formData) => {
+    return (dispatch) => {
+        fetchInfoProfile(formData).then((res) => {
+            if (res.data.resultCode === 0) {
+                dispatch({
+                    type: 'save-info', profile: {
+                        userId: formData.userId,
+                        aboutMe: formData.aboutMe,
+                        lookingForAJob: formData.lookingForAJob,
+                        lookingForAJobDescription: formData.lookingForAJobDescription,
+                        fullName: formData.fullName,
+                        contacts: {
+                            github: formData.github,
+                            vk: formData.vk,
+                            facebook: formData.facebook,
+                            instagram: formData.instagram,
+                            twitter: formData.twitter,
+                            website: formData.website,
+                            youtube: formData.youtube,
+                            mainLink: formData.mainLink
+                        }
+                    }
+                })
+            } else {
+                dispatch(stopSubmit('changeProfile', {_error: res.data.messages}));
+            }
         })
     }
 }

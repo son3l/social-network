@@ -1,15 +1,20 @@
 import classes from "./Account.module.css";
 import logo from './logo192.png'
 import {StatusWithHook} from "./Status/StatusWithHook";
+import {Contacts} from "./Contacts/Contacts";
 
 export const Account = (props) => {
     return (<div className={classes.acc}>
+            <br/>
+            <br/>
+            <div className={classes.contacts}>
+                <Contacts contacts={props.profile.contacts}/>
+            </div>
             <img className={classes.image} src={props.profile.photos.small ? props.profile.photos.small : logo}/>
             <br/>
             {
-                props.owner&&<input className={classes.file} type={'file'} onChange={(event)=>{
-                    if(event.target.files.length)
-                    {
+                props.owner && <input className={classes.file} type={'file'} onChange={(event) => {
+                    if (event.target.files.length) {
                         props.saveFileThunkCreator(event.target.files[0]);
                     }
                 }}/>

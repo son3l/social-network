@@ -4,7 +4,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {
     fetchStatusThunkCreator,
     getProfileThunkCreator,
-    saveFileThunkCreator
+    saveFileThunkCreator, saveProfileThunkCreator
 } from "../../Redux/Reducers/ProfilePostReducer";
 import {authHoc} from "../Hoc/AuthRedirect";
  export const withRouter = (Component)=> {
@@ -40,6 +40,9 @@ export const ProfileContentContainer = connect(
             },
             saveFileThunkCreator: (file)=>{
                 saveFileThunkCreator(file)(dispatch);
+            },
+            saveProfileThunkCreator: (formData)=>{
+                saveProfileThunkCreator(formData)(dispatch);
             }
         }
     }

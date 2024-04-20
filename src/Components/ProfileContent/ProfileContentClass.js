@@ -1,5 +1,6 @@
 import React from "react";
 import {ProfileContent} from "./ProfileContent";
+import {saveProfileThunkCreator} from "../../Redux/Reducers/ProfilePostReducer";
 
 export class ProfileContentClass extends React.Component {
 
@@ -24,7 +25,7 @@ export class ProfileContentClass extends React.Component {
 
     render() {
         return (
-            <ProfileContent {...this.props} saveFileThunkCreator={this.props.saveFileThunkCreator} owner={!this.props.router.params.profileId} status={this.props.status} profile={this.props.profile}
+            <ProfileContent {...this.props} saveProfileThunkCreator={this.props.saveProfileThunkCreator} saveFileThunkCreator={this.props.saveFileThunkCreator} owner={!this.props.router.params.profileId} status={this.props.status} profile={this.props.profile}
                             fetchStatusThunkCreator={this.props.fetchStatusThunkCreator}/>)
     }
 

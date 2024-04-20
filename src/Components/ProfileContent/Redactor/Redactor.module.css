@@ -1,0 +1,20 @@
+.fields {
+    padding: 5px;
+}
+
+.form {
+    padding-left: 20%;
+    border: dimgray 2px solid;
+    background-color: darkgrey;
+    border-radius: 25px;
+}
+
+.button {
+    background-color: dimgray;
+    color: black;
+    border-radius: 5px;
+    border: darkgrey 2px solid;
+}
+.modules{
+    font-size: large;
+}

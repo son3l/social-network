@@ -72,3 +72,22 @@ export const fetchLogin = (data) => {
             {email: data.email, password: data.password, rememberMe: data.rememberMe});
     return axios.delete('https://social-network.samuraijs.com/api/1.0/auth/login');
 }
+export const fetchInfoProfile = (formData) => {
+    return axios.put('https://social-network.samuraijs.com/api/1.0/profile', {
+        userId: formData.userId,
+        aboutMe:formData.aboutMe,
+        lookingForAJob: formData.lookingForAJob,
+        lookingForAJobDescription: formData.lookingForAJobDescription,
+        fullName: formData.fullName,
+        contacts: {
+            github: formData.github,
+            vk: formData.vk,
+            facebook: formData.facebook,
+            instagram: formData.instagram,
+            twitter: formData.twitter,
+            website: formData.website,
+            youtube: formData.youtube,
+            mainLink: formData.mainLink
+        }
+    }, {withCredentials: true})
+}
