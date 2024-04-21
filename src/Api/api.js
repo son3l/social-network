@@ -69,7 +69,7 @@ export const fetchPhoto = (file) => {
 export const fetchLogin = (data) => {
     if (data.type)
         return axios.post('https://social-network.samuraijs.com/api/1.0/auth/login',
-            {email: data.email, password: data.password, rememberMe: data.rememberMe});
+            {email: data.email, password: data.password, rememberMe: data.rememberMe, captcha: data.captcha});
     return axios.delete('https://social-network.samuraijs.com/api/1.0/auth/login');
 }
 export const fetchInfoProfile = (formData) => {
@@ -90,4 +90,7 @@ export const fetchInfoProfile = (formData) => {
             mainLink: formData.mainLink
         }
     }, {withCredentials: true})
+}
+export const fetchCaptcha =()=>{
+    return axios.get('https://social-network.samuraijs.com/api/1.0/security/get-captcha-url');
 }

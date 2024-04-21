@@ -23,6 +23,11 @@ const LoginForm = (props) => {
             <div className={classes.fields}>
                 <button className={classes.button}>sign in</button>
             </div>
+            {props.captcha && <>
+                <img src={props.captcha}/>
+            <Field validate={[reqField]} component={Input}
+                   name={'captcha'}/>
+            </>}
         </form>
     )
 }

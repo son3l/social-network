@@ -6,6 +6,7 @@ import {UserBarContainer} from "../Users/UserBarContainer";
 import {ProfileContentContainer} from "../ProfileContent/ProfileContentContainer";
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {LoginContainer} from "../LoginPage/LoginContainer";
+import {NotFound} from "../NotFound/NotFound";
 
 
 function App(props) {
@@ -24,6 +25,7 @@ function App(props) {
                                element={<ProfileContentContainer/>}/>
                         <Route path='/users' element={<UserBarContainer/>}/>
                         <Route path={'/login'} element={<LoginContainer/>}/>
+                        <Route path={'*'} element={<NotFound/>}/>
                     </Routes>
                 </div>
             </div>

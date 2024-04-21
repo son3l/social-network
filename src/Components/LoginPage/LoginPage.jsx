@@ -7,13 +7,14 @@ export const LoginPage = (props) => {
             type: true,
             email: formData.login,
             password: formData.password,
-            rememberMe: formData.rememberMe
+            rememberMe: formData.rememberMe,
+            captcha: formData.captcha
         })
     }
     return (<>
         {
             props.isAuth ? <Navigate to={`/profile/${props.id}`}/> : <>
-                <ReduxLoginForm onSubmit={onSubmit}/>
+                <ReduxLoginForm captcha={props.captcha} onSubmit={onSubmit}/>
             </>
         }
     </>)

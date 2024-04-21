@@ -4,16 +4,17 @@ import {LoginThunkCreator} from "../../Redux/Reducers/AuthReducer";
 
 export const LoginContainer = connect(
     (state) => {
-return{
-isAuth: state.auth.isAuth,
-    id: state.auth.userId
-}
+        return {
+            isAuth: state.auth.isAuth,
+            id: state.auth.userId,
+            captcha: state.auth.captcha
+        }
     },
     (dispatch) => {
         return {
             LoginThunkCreator: (data) => {
                 LoginThunkCreator(data)(dispatch)
-                }
+            }
         }
     })
 (LoginPage);
